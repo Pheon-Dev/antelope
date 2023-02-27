@@ -1,7 +1,7 @@
 
-# antelope.nvim
+# antelope
 
-buffer / mark / tabpage / colorscheme switcher for [Neovim](https://github.com/neovim/neovim).
+buffers / marks switcher for [Neovim](https://github.com/neovim/neovim).
 
 #### Marks
 ![marks](marks.png)
@@ -15,14 +15,21 @@ buffer / mark / tabpage / colorscheme switcher for [Neovim](https://github.com/n
 
 ### Installation
 
+Using [Lazy](https://github.com/folke/lazy.nvim)
+```lua
+  {
+     'Pheon-Dev/antelope'
+  }
+```
+
 Using [packer.nvim](https://github.com/wbthomason/packer.nvim)
 ```lua
-use 'toppair/antelope.nvim'
+use 'Pheon-Dev/antelope'
 ```
 
 Using [vim-plug](https://github.com/junegunn/vim-plug)
 ```vim
-Plug 'toppair/antelope.nvim'
+Plug 'Pheon-Dev/antelope'
 ```
 
 ### Setup
@@ -89,7 +96,7 @@ vim.keymap.set('n', '<leader>rb', function() require('antelope').buffers(buffer_
 or command with default options applied:
 
 ```
-AntelopeOpen buffers
+Antelope buffers
 ```
 
 When window is open:
@@ -127,7 +134,7 @@ require('antelope').marks(options)
 or command with default options applied:
 
 ```
-AntelopeOpen marks
+Antelope marks
 ```
 
 When window is open:
@@ -136,61 +143,6 @@ When window is open:
 - press `|` to split mark vertically
 - press `-` to split mark horizontally
 - press `]` to open mark in a new tab
-
-#### tabpages
-
-```lua
--- default
-local options = {
-  show_icons = true,
-  show_current = false,
-  -- A map of action to key that should be used to invoke it
-  actions = {
-    delete = '<Space>',
-  },
-}
-
-require('antelope').tabpages(options)
-```
-
-or command with default options applied:
-
-```
-AntelopeOpen tabpages
-```
-
-When window is open:
-- type in the tabpage number to switch to that tabpage
-- press `<Space>` to start deleting tabpages
-
-#### colorschemes
-
-```lua
--- default
-local options = {
-  filter = (function()
-    local default = {
-      'blue', 'darkblue', 'default', 'delek', 'desert', 'elflord', 'evening', 'industry', 'koehler',
-      'morning', 'murphy', 'pablo', 'peachpuff', 'ron', 'shine', 'slate', 'torte', 'zellner',
-    }
-
-    return function(name)
-      return not vim.tbl_contains(default, name) -- return true to disable
-    end
-  end)(),
-}
-
-require('antelope').colorschemes(options)
-```
-
-or command with default options applied:
-
-```
-AntelopeOpen colorschemes
-```
-
-When window is open:
-- type in the colorscheme handle to set it
 
 #### Instant switching to nth buffer
 
