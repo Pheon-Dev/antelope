@@ -12,13 +12,9 @@ local notify = helpers.notify
 
 local buffers = require("antelope.buffers")
 local marks = require("antelope.marks")
-local tabpages = require("antelope.tabpages")
-local colorschemes = require("antelope.colorschemes")
 
 local make_buffers = require("antelope.buffers.make_buffers")
 local make_marks = require("antelope.marks.make_marks")
-local make_tabpages = require("antelope.tabpages.make_tabpages")
-local make_colorschemes = require("antelope.colorschemes.make_colorschemes")
 
 local module = {}
 
@@ -102,52 +98,6 @@ function module.marks(options)
 			data = mark,
 		})
 	end, mrks)
-
-	machine.ctx = {
-		picker = Picker:new(entries),
-		options = options,
-	}
-
-	machine:init()
-end
-
-function module.tabpages(options)
-	options = tabpages.options.extend(options)
-
-	local tabs = make_tabpages(options)
-
-	if not options.show_current and #tabs < 2 then
-		return notify("Only one tab")
-	end
-
-	local machine = Machine:new(tabpages.machine)
-
-	local entries = vim.tbl_map(function(tabpage)
-		return Entry:new({
-			component = tabpages.component,
-			data = tabpage,
-		})
-	end, tabs)
-
-	machine.ctx = {
-		picker = Picker:new(entries),
-		options = options,
-	}
-
-	machine:init()
-end
-
-function module.colorschemes(options)
-	options = colorschemes.options.extend(options)
-
-	local machine = Machine:new(colorschemes.machine)
-
-	local entries = vim.tbl_map(function(colorscheme)
-		return Entry:new({
-			component = colorschemes.component,
-			data = colorscheme,
-		})
-	end, make_colorschemes(options))
 
 	machine.ctx = {
 		picker = Picker:new(entries),
