@@ -170,4 +170,10 @@ AntelopeGrayOut            -> 'Comment'
 AntelopeMatchExact         -> 'String'
 AntelopePriority           -> 'Special'
 AntelopeCurrent            -> 'Title'
+
+-- Example
+vim.api.nvim_set_hl(0, "AntelopeBorder", { fg = "#44475a", bg = "#21222c" })
+vim.api.nvim_set_hl(0, "AntelopeMarkLocation", { fg = "#ff33a8" })
+vim.api.nvim_set_hl(0, "AntelopeHandleMarkLocal", { fg = "#50fa7b", bg = "#21222c" })
+vim.api.nvim_set_hl(0, "AntelopeMark", { fg = "#a9b1d6", bg = "#2122c" })
 ```
