@@ -17,7 +17,7 @@ buffers / marks switcher for [Neovim](https://github.com/neovim/neovim).
 
 Using [Lazy](https://github.com/folke/lazy.nvim)
 ```lua
-  {
+  return {
      'Pheon-Dev/antelope'
   }
 ```
