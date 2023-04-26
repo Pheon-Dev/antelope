@@ -12,9 +12,11 @@ local notify = helpers.notify
 
 local buffers = require('antelope.buffers')
 local marks = require('antelope.marks')
+local tabpages = require('antelope.tabpages')
 
 local make_buffers = require('antelope.buffers.make_buffers')
 local make_marks = require('antelope.marks.make_marks')
+local make_tabpages = require('antelope.tabpages.make_tabpages')
 
 local module = {}
 
@@ -22,6 +24,32 @@ function module.setup(cfg)
   config.setup(cfg)
   highlights.setup()
   cache.setup()
+end
+
+function module.tabpages(options)
+  options = tabpages.options.extend(options)
+
+  local tabs = make_tabpages(options)
+
+  if not options.show_current and #tabs < 2 then
+    return notify('Only one tab')
+  end
+
+  local machine = Machine:new(tabpages.machine)
+
+  local entries = vim.tbl_map(function(tabpage)
+    return Entry:new({
+      component = tabpages.component,
+      data = tabpage,
+    })
+  end, tabs)
+
+  machine.ctx = {
+    picker = Picker:new(entries),
+    options = options,
+  }
+
+  machine:init()
 end
 
 function module.buffers(options)
