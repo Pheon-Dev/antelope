@@ -144,6 +144,32 @@ When window is open:
 - press `-` to split mark horizontally
 - press `]` to open mark in a new tab
 
+
+#### tabpages
+
+```lua
+-- default
+local options = {
+  show_icons = true,
+  show_current = false,
+  -- A map of action to key that should be used to invoke it
+  actions = {
+    delete = '<Space>',
+  },
+}
+
+require('antelope').tabpages(options)
+```
+
+or command with default options applied:
+
+```
+AntelopeOpen tabpages
+```
+
+When window is open:
+- type in the tabpage number to switch to that tabpage
+- press `<Space>` to start deleting tabpages
 #### Instant switching to nth buffer
 
 ```lua
