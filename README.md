@@ -2,7 +2,7 @@
 # antelope
 
 buffers / marks / tabs navigation tool for [Neovim](https://github.com/neovim/neovim).
-
+> heavily inspired by [reach plugin](https://github.com/toppair/reach.nvim)
 #### Marks
 ![marks](marks.png)
 
