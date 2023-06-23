@@ -1,7 +1,7 @@
 
 # antelope
 
-buffers / marks switcher for [Neovim](https://github.com/neovim/neovim).
+buffers / marks / tabs navigation tool for [Neovim](https://github.com/neovim/neovim).
 
 #### Marks
 ![marks](marks.png)
