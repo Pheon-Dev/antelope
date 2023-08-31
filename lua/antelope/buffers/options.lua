@@ -6,7 +6,7 @@ local module = {}
 
 local default = {
   show_icons = true,
-  show_current = true,
+  show_current = false,
   show_modified = true,
   modified_icon = "",
   grayout_current = true,
